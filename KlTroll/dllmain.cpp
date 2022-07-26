@@ -4,8 +4,8 @@ unsigned char	patchOpcodes[] = { 0x48, 0xb8, // mov rax , fake func
 									0, 0, 0, 0, 0, 0, 0, 0,
 									0xff, 0xe0// jmp rax
 };
-unsigned char	msg[] = { 'F','U','C','K'
-						,'-','Y','O','U'
+unsigned char	msg[] = { 'T','R','O','L'
+						,'L','E','D','-'
 };
 LPVOID	orgadd;
 SIZE_T	nobytes;
