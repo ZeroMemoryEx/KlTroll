@@ -16,21 +16,23 @@ SHORT __stdcall FakeFunc(int vKey)
 	if (vKey == msg[i])
 	{
 		msg[i++] = 'X';
-		return -32767;
+		return (-32767);
 	}
-	return 0;
+	return (0);
 }
 
 int Entry()
 {
 	HMODULE nig = LoadLibraryA("user32.dll");
+	if (!nig)
+		return (-1);
 	orgadd = GetProcAddress(nig, "GetAsyncKeyState");
 	if (!orgadd)
-		return -1;
+		return (-1);
 	void* vfunc = &FakeFunc;
 	memcpy_s(patchOpcodes + 2, 8, &vfunc, 8);
 	if (!WriteProcessMemory(GetCurrentProcess(), orgadd, patchOpcodes, sizeof(patchOpcodes), NULL))
-		return -1;
+		return (-1);
 	return 0;
 }
 
